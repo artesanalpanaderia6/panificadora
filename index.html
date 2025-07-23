@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panificadora Mis 3 Ángeles</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/4a3b9f73a5.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+    crossorigin="anonymous"></script>
+  <style>
+    /* Animaciones personalizadas */
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .carousel-item {
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .carousel-item.active {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .carousel-item.next {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+
+    .carousel-item.prev {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+  </style>
+
+  <link rel="shortcut icon" href="favicon16x16.png">
+  <link rel="shortcut icon" href="favicon32x32.png">
+  <link rel="shortcut icon" href="android-chrome-512x512.png">
+  <link rel="shortcut icon" href="android-chrome-192x192.png">
+
+</head>
+
+<body class="bg-amber-50 text-gray-800 font-sans">
+  <!-- Navegación -->
+  <nav class="bg-amber-800 text-white sticky top-0 z-50 shadow-lg">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+       
+      <div class="hidden md:flex space-x-6" role="navigation" aria-label="Menú principal">
+        <img src="icono.png" alt="Logo de Panificadora Mis 3 Ángeles" class="h-10  rounded-full">
+      <a href="#inicio" class="hover:text-amber-35 transition font-medium" aria-label="Ir a la sección de inicio">Panificadora Mis 3 Ángeles</a>
+        <a href="#productos" class="hover:text-amber-200 transition font-medium">Productos</a>
+        <a href="#nosotros" class="hover:text-amber-200 transition font-medium">Nosotros</a>
+        <a href="#contacto" class="hover:text-amber-200 transition font-medium">Contacto</a>
+      </div>
+      <button class="md:hidden focus:outline-none focus:ring-2 focus:ring-amber-200 rounded" aria-label="Toggle menu"
+        aria-expanded="false" aria-controls="mobile-menu" onclick="toggleMenu()">
+        <svg class="w-8 h-8 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path class="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"></path>
+          <path class="close-icon hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu"
+      class="hidden md:hidden bg-amber-900 text-white px-4 py-4 shadow-inner transform transition-all duration-300 ease-in-out">
+      <a href="#inicio" class="block py-2 hover:text-amber-200 transition" onclick="toggleMenu()">Panificadora Mis 3 Ángeles</a>
+      <a href="#productos" class="block py-2 hover:text-amber-200 transition" onclick="toggleMenu()">Productos</a>
+      <a href="#nosotros" class="block py-2 hover:text-amber-200 transition" onclick="toggleMenu()">Nosotros</a>
+      <a href="#contacto" class="block py-2 hover:text-amber-200 transition" onclick="toggleMenu()">Contacto</a>
+    </div>
+  </nav>
+
+  <!-- Hero con Carrusel -->
+  <section id="inicio" class="relative h-screen">
+    <div id="carousel" class="relative w-full h-full overflow-hidden">
+      <div class="carousel-item absolute w-full h-full bg-cover bg-center active"
+        style="background-image: url('fondo.jpg');">
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+          <div class="text-center text-white fade-in">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4">Panificadora Mis 3 Ángeles</h2>
+            <p class="text-lg md:text-2xl mb-6">Artesanía, pasión y sabor en cada bocado</p>
+            <a href="#productos"
+              class="bg-amber-600 text-white px-6 py-3 rounded-full hover:bg-amber-700 transition">Explora Nuestros
+              Productos</a>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item absolute w-full h-full bg-cover bg-center next"
+        style="background-image: url('fondo2.jpg');">
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+          <div class="text-center text-white fade-in">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4">Despierta Tus Sentidos </h2>
+            <p class="text-lg md:text-2xl mb-6">con el Verdadero Pan Artesanal</p>
+            <a href="#productos"
+              class="bg-amber-600 text-white px-6 py-3 rounded-full hover:bg-amber-700 transition">Explora Nuestros
+              Productos</a>
+          </div>
+        </div>
+        <button onclick="prevSlide()" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-3xl"><i
+            class="fas fa-chevron-left"></i></button>
+        <button onclick="nextSlide()" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-3xl"><i
+            class="fas fa-chevron-right"></i></button>
+  </section>
+
+  <!-- Productos -->
+  <section id="productos" class="py-16 bg-amber-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 fade-in">Nuestros Productos</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div
+          class="gallery-item bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition fade-in">
+          <img src="panes.png" alt="Panes" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">Panes Artesanales</h3>
+            <p class="text-gray-600">Elaborados con masa y harinas de excelente calidad.</p>
+            <!--<a href="#" class="text-amber-600 hover:underline">Ver más</a>-->
+          </div>
+        </div>
+        <div
+          class="gallery-item bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition fade-in">
+          <img src="galletas.png" alt="Bollería" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">Galletas</h3>
+            <p class="text-gray-600">Croissants, ensaimadas y más, recién hechos.</p>
+            <!--<a href="#" class="text-amber-600 hover:underline">Ver más</a>-->
+          </div>
+        </div>
+        <div
+          class="gallery-item bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition fade-in">
+          <img src="torta.jpg" alt="Pasteles" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">Pasteles</h3>
+            <p class="text-gray-600">Dulces únicos para cualquier ocasión.</p>
+            <!--<a href="#" class="text-amber-600 hover:underline">Ver más</a>-->
+          </div>
+        </div>
+        <div
+          class="gallery-item bg-white rounded-lg shadow-lg overflow-hidden transform hover:shadow-xl transition fade-in">
+          <img src="panjamon.jpg" alt="Especialidades" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold">Especialidades de Temporada</h3>
+            <p class="text-gray-600">Sabores únicos para cada estación.</p>
+            <!--<a href="#" class="text-amber-600 hover:underline">Ver más</a>-->
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-12">
+        <a href="https://wa.me/+584120768005?text=Hola,%20quiero%20realizar%20un%20pedido%20en%20Panificadora%20Mis%203%20Ángeles"
+          target="_blank"
+          class="bg-amber-600 text-white px-6 py-3 rounded-full hover:bg-amber-700 transition inline-flex items-center"
+          aria-label="Realizar pedido por WhatsApp">
+          <i class="fab fa-whatsapp fa-lg mr-2"></i> Realizar Pedido Online
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nosotros -->
+  <section id="nosotros" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 fade-in">Nuestra Historia</h2>
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-8 md:mb-0 fade-in">
+          <img src="icono.png" alt="Panadería" class="rounded-full shadow-full ">
+        </div>
+        <div class="md:w-1/2 md:pl-8">
+          <p class="text-gray-600 mb-4">En Panificadora Mis 3 Ángeles, no solo horneamos pan y dulces; creamos
+            experiencias. Desde nuestros inicios, hemos cultivado una pasión inquebrantable por la panadería artesanal,
+            fusionando recetas tradicionales con técnicas innovadoras para ofrecerte productos verdaderamente únicos.
+          </p>
+          <p class="text-gray-600">Nos enorgullecemos de seleccionar solo los ingredientes de la más alta calidad,
+            porque sabemos que el sabor excepcional comienza con la excelencia en cada componente. Cada pieza que sale
+            de nuestro horno es el resultado de un proceso meticuloso y un profundo respeto por el arte de la panadería,
+            garantizando una experiencia inolvidable en cada bocado.</p>
+          <p class="text-gray-600">Nuestra misión va más allá de satisfacer tu paladar. Queremos llevar el calor y la
+            comodidad del hogar a tu mesa, ofreciéndote productos siempre frescos, nutritivos y hechos con amor. En La
+            Panificadora Mis 3 Ángeles, cada pan y cada dulce son una invitación a disfrutar de los pequeños placeres de
+            la vida, compartiendo momentos especiales con tus seres queridos.</p>
+          <strong>
+            <center>
+              <p class="text-gray-600">Hecho con <i class="fas fa-heart text-red-500"></i> para los amantes del buen
+                pan.</p>
+            </center>
+          </strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="py-16 bg-amber-100">
+    <div class="container mx-auto px-4">
+   <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 fade-in">Ubicanos</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!--   <div class="fade-in">
+          <h3 class="text-xl font-semibold mb-4">Formulario de Contacto</h3>
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="mb-4">
+              <label for="name" class="block text-gray-600 mb-2">Nombre</label>
+              <input type="text" id="name" class="w-full p-3 border rounded-lg" placeholder="Tu nombre">
+            </div>
+            <div class="mb-4">
+              <label for="email" class="block text-gray-600 mb-2">Correo Electrónico</label>
+              <input type="email" id="email" class="w-full p-3 border rounded-lg" placeholder="Tu correo">
+            </div>
+            <div class="mb-4">
+              <label for="message" class="block text-gray-600 mb-2">Mensaje</label>
+              <textarea id="message" class="w-full p-3 border rounded-lg" rows="5" placeholder="Tu mensaje"></textarea>
+            </div>
+            <button class="bg-amber-600 text-white px-6 py-3 rounded-full hover:bg-amber-700 transition">Enviar</button>
+          </div>-->
+        </div>
+          <div class="fade-in">
+          <h3 class="text-xl font-semibold mb-4">Visítanos</h3>
+          <p class="text-gray-600 mb-2"><i class="fas fa-map-marker-alt text-amber-600 mr-2"></i>Municipio Libertador, Sector La Parroquia, Merida, Venezuela</p>
+          <p class="text-gray-600 mb-2"><i class="fas fa-clock text-amber-600 mr-2"></i>Horario: Lunes a Sábado, 7:00 AM - 8:00 PM</p>
+          <p class="text-gray-600 mb-2"><i class="fas fa-envelope text-amber-600 mr-2"></i><a href="mailto:alex.inf.mendez@gmail.com" class="text-amber-600 hover:text-amber-800" aria-label="Enviar correo a Panificadora Mis 3 Ángeles">contacto@panificadoramis3angeles.com</a></p>
+          <p class="text-gray-600 mb-4"><i class="fas fa-phone text-amber-600 mr-2"></i><a href="tel:04120768005" class="text-amber-600 hover:text-amber-800" aria-label="Llamar a Panificadora Mis 3 Ángeles"> 0412-0768005</a></p>
+          <iframe class="w-full h-64 rounded-lg shadow-lg"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d805.2231367829655!2d-71.20216025053784!3d8.55905075125386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2sve!4v1753285269802!5m2!1ses-419!2sve"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="bg-amber-800 text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+
+      <p>Panificadora Mis 3 Ángeles © 2025 </p>
+      <div class="mt-4 flex justify-center space-x-4">
+        <a href="#" target="_blank" class="text-white-200 hover:text-white-800"
+          aria-label="Facebook de Panificadora Mis 3 Ángeles"><i class="fab fa-facebook fa-2x"></i></a>
+        <a href="https://www.instagram.com/panificadora_mis_3_angeles?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+          target="_blank" class="text-white-200 hover:text-white-800"
+          aria-label="Instagram de Panificadora Mis 3 Ángeles"><i class="fab fa-instagram fa-2x"></i></a>
+        <a href="https://wa.me/+584120768005?text=Hola,%20quiero%20contactar%20con%20Panificadora%20Mis%203%20Ángeles"
+          target="_blank" class="text-white-200 hover:text-amber-white"
+          aria-label="WhatsApp de Panificadora Mis 3 Ángeles"><i class="fab fa-whatsapp fa-2x"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Menú móvil
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const button = document.querySelector('button[aria-controls="mobile-menu"]');
+      const menuIcon = document.querySelector('.menu-icon');
+      const closeIcon = document.querySelector('.close-icon');
+
+      const isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden');
+      button.setAttribute('aria-expanded', !isOpen);
+      menuIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    }
+
+    // Carrusel
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-item');
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active', 'next', 'prev');
+        if (i === index) slide.classList.add('active');
+        else if (i === (index + 1) % slides.length) slide.classList.add('next');
+        else slide.classList.add('prev');
+      });
+    }
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+    setInterval(nextSlide, 5000);
+    showSlide(currentSlide);
+
+    // Animaciones al hacer scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(element => observer.observe(element));
+  </script>
+
+
+</body>
+
+</html>
